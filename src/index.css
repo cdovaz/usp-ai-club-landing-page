@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+:root {
+  --font-headline: "Space Grotesk", sans-serif;
+  --font-subtitle: "Syne", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Ink dark neutral ramp tinted toward the Amazon Estuary / Ocean world */
+  --bg-deepest: #070b12;
+  --bg-page: #0b0f17;
+  --bg-card: #101724;
+  --bg-raised: #162032;
+
+  --hairline: rgba(237, 239, 242, 0.08);
+  --hairline-strong: rgba(237, 239, 242, 0.14);
+
+  --text-primary: #edeff2;
+  --text-secondary: #a3a9b8;
+  --text-muted: #7a8296;
+
+  /* Strict 3-blue prism system from DESIGN.md */
+  --blue-1: #89d3f8;
+  --blue-2: #287fc4;
+  --blue-3: #123c69;
+
+  /* Easing from unslop tokens */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    background-color: var(--bg-deepest);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--bg-deepest);
+    color: var(--text-primary);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: rgba(40, 127, 196, 0.35);
+    color: #edeff2;
+  }
+}
+
+.font-headline {
+  font-family: var(--font-headline);
+}
+
+.font-subtitle {
+  font-family: var(--font-subtitle);
+}
+
+.font-mono-tabular {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Surface elevation: step + 1px hairline + optional subtle top highlight */
+.surface-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--hairline);
+}
+
+.surface-raised {
+  background-color: var(--bg-raised);
+  border: 1px solid var(--hairline);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Single subtle load entrance (unslop Motion pass) */
+@keyframes enterRise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.enter-rise {
+  animation: enterRise 420ms var(--ease-out) both;
+}
+
+.enter-delay-1 {
+  animation-delay: 50ms;
+}
+
+.enter-delay-2 {
+  animation-delay: 100ms;
+}
+
+.enter-delay-3 {
+  animation-delay: 150ms;
+}
